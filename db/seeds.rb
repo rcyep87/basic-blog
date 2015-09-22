@@ -1,7 +1,7 @@
 50.times do
   post = Post.create({
     title: Faker::Team.name,
-    body:  Faker::Lorem.paragraph })
+    body:  Faker::Lorem.paragraph(50) })
 
     Comment.create({
       post_id: post.id,
