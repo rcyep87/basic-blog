@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    render template: 'posts/show.html.erb', locals: { post: Post.find(params[:id]) }
+    render template: 'posts/show.html.erb', locals: { post: Post.find(params[:id]), comments: Comment.where(post_id: params[:id]) }
   end
 
 end
