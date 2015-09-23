@@ -5,7 +5,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    render template: 'posts/show.html.erb', locals: { post: Post.find(params[:id]), comments: Comment.where(post_id: params[:id]) }
+    render template: 'posts/show.html.erb', locals: { post: Post.find(params[:id]),
+      comments: Comment.where(post_id: params[:id]),
+      new_comment: Comment.new
+     }
   end
 
   def new

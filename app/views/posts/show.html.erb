@@ -1,4 +1,4 @@
-<h2><%= post.title %></h2>
+<h2><%= post.title %> Published: <%=post.published %></h2>
 <body>
   <%= post.body %>
 <ol>
@@ -8,4 +8,11 @@
   <% end %>
 </ol>
 </body>
-<h3>Has this post been published? <%=post.published %></h3>
+
+<%= form_for(new_comment) do |c| %>
+  <%= c.hidden_field :post_id, :value => params[:id] %>
+  <%= c.label :comment %>
+  <%= c.text_field :message %>
+
+  <%= c.submit %>
+<% end %>
