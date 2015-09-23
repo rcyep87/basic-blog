@@ -9,16 +9,15 @@ class PostsController < ApplicationController
   end
 
   def new
-    new_form = Post.all.map { |p| [p.title, p.body] }
     render template: 'posts/new.html.erb', locals: {
-      new_form: Post.new,
+      new_post: Post.new
     }
   end
 
   def create
     new_post = Post.new
-    new_post.title = params.fetch(:new_post).fetch(:title)
-    new_post.body  = params.fetch(:new_post).fetch(:body)
+    new_post.title = params.fetch(:post).fetch(:title)
+    new_post.body  = params.fetch(:post).fetch(:body)
     new_post.published = false
     if new_post.save
       redirect_to posts_path(new_post)
