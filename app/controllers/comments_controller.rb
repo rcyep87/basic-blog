@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     new_comment.message = params.fetch(:comment).fetch(:message)
     new_comment.post_id = params.fetch(:comment).fetch(:post_id)
     if new_comment.save
-      redirect_to post_path(params[:id])
+      redirect_to post_path(params[:comment][:post_id])
     else
       redirect_to root_path
     end
